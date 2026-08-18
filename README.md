@@ -44,10 +44,10 @@ Key ecosystem components include the consumer-facing website and mobile app (30M
 
 BookMyShow primarily caters to urban, tech-savvy individuals aged 18–45 seeking convenient and efficient ticket booking solutions. Its core segments include:
 
-* **Movie-goers**: The largest segment, driven by multiplex growth in metros and Tier-2 cities
-* **Live event enthusiasts**: Concert and comedy show attendees; BookMyShow holds a 55% market share in the live events vertical in India
-* **Sports fans**: Cricket, football, and kabaddi event bookings
-* **Corporate clients**: Group bookings for team events and premieres
+* **Movie-goers**: The largest segment, driven by multiplex growth in metros and Tier-2 cities.
+* **Live event enthusiasts**: Concert and comedy show attendees; BookMyShow holds a 55% market share in the live events vertical in India.
+* **Sports fans**: Cricket, football, and kabaddi event bookings.
+* **Corporate clients**: Group bookings for team events and premieres.
 
 BookMyShow's expansion beyond movie ticketing into live events has allowed it to increase user engagement and diversify revenue streams, broadening its addressable customer base well beyond the traditional movie-goer.
 
