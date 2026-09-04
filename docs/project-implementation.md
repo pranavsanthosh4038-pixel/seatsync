@@ -29,26 +29,8 @@ This is a living project management document tracking the end-to-end execution o
 
 ---
 
-## 2. Summary of Progress by Team Member
 
-* **Student A (DevOps, Cloud & Infrastructure Specialist):**
-  * **Completed Tasks:** T001, T002, T005, T007, T010.
-  * **In Progress / Blocked:** T015 (In Progress), T016 (Blocked due to AWS sandbox quota expansion pending).
-  * **Key Contributions:** Provisioned cloud infrastructure via Terraform, set up Kubernetes (EKS) deployment autoscaling, and established Kafka event bus messaging infrastructure.
-
-* **Student B (Backend & Systems Architect):**
-  * **Completed Tasks:** T003, T004, T008, T009.
-  * **In Progress / Blocked:** T014 (In Progress), T016 (Blocked).
-  * **Key Contributions:** Engineered high-concurrency Go microservices for seat reservations, developed the Payment Retry logic, and designed the Smart Waitlist reallocation algorithm.
-
-* **Student C (Frontend & Systems Integration Lead):**
-  * **Completed Tasks:** T006, T011, T012, T013.
-  * **In Progress / Planned:** T017 (Planned), T018 (In Progress).
-  * **Key Contributions:** Built React Native and Web checkout interfaces, connected external Vista ERP inventory APIs, and integrated the push notification delivery pipeline.
-
----
-
-## 3. Risk & Impediment Register
+## 2. Risk & Impediment Register
 
 1. **Blocker on Task T016 (Load Testing):**
    * **Issue:** Stress testing execution for 5M concurrent requests triggers AWS sandbox rate limits on synthetic traffic generation instances.
