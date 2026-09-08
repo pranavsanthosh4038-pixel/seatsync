@@ -30,6 +30,3 @@ SeatSync supports multiple languages, making the platform more accessible to a w
 The load engine is designed to test how SeatSync performs under high demand. It can simulate thousands of users checking for seats and multiple cancellations happening at the same time. This helps us identify possible performance issues and ensures that the platform remains fast, stable, and reliable during peak booking periods, such as weekends or the release of highly anticipated movies. 
 
 <br>
-
-
-Instruction manual
