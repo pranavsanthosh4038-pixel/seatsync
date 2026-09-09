@@ -1,116 +1,32 @@
-# Seat Sync Live
+# Seat Sync 
+<img width="1600" height="1600" alt="image" src="https://github.com/user-attachments/assets/6319016e-0d55-4642-8db5-23a1e1a167cb" />
+Apeksha Vemali <br>
+Ardra Jyothikumar <br>
+Pranav S <br>
+Cuttamanchi Parthiv Reddy <br>
+Roopika Yalamelli 
+<br>
 
-Build a full-stack movie ticket waitlist web app called SeatSync for Bengaluru, India.
+## FEATURES 
 
-Tech stack: React frontend + Supabase backend (database + realtime)
+1. Live Queue Status
 
-CORE CONCEPT:
+SeatSync provides a live queue status that allows users to see exactly where they stand in the waiting list. Instead of repeatedly checking the booking page, users can track how many people are ahead of them and get an idea of how likely they are to get a seat. This makes the waiting process more transparent and reduces uncertainty.
 
-Every show listed is "sold out". Users can join a waitlist for specific seats. When a seat is released (via a demo admin panel), the first person in the waitlist queue gets notified. This simulates BookMyShow's intelligent cancellation and load management system.
+2. Instant Cancellation Notifications
 
-DATABASE (Supabase):
+SeatSync sends instant notifications whenever a seat becomes available due to a cancellation. Users don’t have to constantly refresh the booking page or manually check for available seats. As soon as a cancellation is detected, the user is alerted, allowing them to act quickly and improve their chances of securing the seat.
 
-Create two tables:
+3. Multiple Theatre Chains
 
-1. seats: id (text, primary key), row_label (text), seat_number (int), status (text, default 'available'), locked_by (text), locked_at (timestamp), expires_at (timestamp)
+SeatSync brings different theatre chains such as PVR, INOX, and Cinepolis onto a single platform. This means users don’t need to switch between different websites or applications to check availability. They can monitor queues and potential seat openings across multiple theatre chains from one place, making the overall booking process more convenient.
 
-2. waitlist: id (uuid), seat_id (text, foreign key to seats), phone (text), position (int), joined_at (timestamp), notified (boolean default false)
+4. Multiple Language Support
 
-Seed the seats table with rows A through L, 16 seats per row (A1 to L16), all status = 'available'
+SeatSync supports multiple languages, making the platform more accessible to a wider range of users in Bengaluru. Since Bengaluru has a diverse population with people speaking different languages, providing language options makes the platform easier to understand and use. This helps create a more inclusive and user-friendly experience.
 
-DESIGN STYLE:
+5. Load Engine
 
-- Background: pure black (#000000)
+The load engine is designed to test how SeatSync performs under high demand. It can simulate thousands of users checking for seats and multiple cancellations happening at the same time. This helps us identify possible performance issues and ensures that the platform remains fast, stable, and reliable during peak booking periods, such as weekends or the release of highly anticipated movies. 
 
-- Panels/cards: #0d0d0d and #121212
-
-- Primary accent: neon cyan (#00f0ff) with text-shadow: 0 0 10px #00f0ff
-
-- Secondary: neon violet (#bf00ff)
-
-- Available seats: neon green (#00ff88) with glow
-
-- Locked seats: neon amber (#ffcc00) with pulse animation
-
-- Selected seats: neon cyan glow
-
-- Font: Orbitron (headings) + Space Mono (labels/data) from Google Fonts
-
-- Overall vibe: dark sci-fi cinema terminal
-
-VIEWS:
-
-VIEW 1 - Movie Browser:
-
-Show a grid of 8 Bengaluru movies currently in theatres (use real recent titles like Alpha, Toy Story 5, Minions & Monsters, Nagabandham, etc). Each card shows movie name, genre, theatres and showtimes. Every showtime shows "X people waiting". Clicking a showtime opens the seat map.
-
-VIEW 2 - Seat Picker:
-
-- Show an auditorium layout with rows A-L, 16 seats each, split into 3 blocks with aisle gaps
-
-- Load real seat states from Supabase
-
-- Available seats glow green, locked seats pulse amber with a live countdown timer (MM:SS) showing when they auto-release
-
-- User can select up to 8 seats
-
-- Right panel shows selected seat chips + phone number input field + "Join Waitlist" button
-
-- On form submit, save to Supabase waitlist table and show confirmation with queue position
-
-- Subscribe to Supabase Realtime so seat states update live without page refresh
-
-- When a seat goes from locked → available, show a toast notification and check waitlist
-
-ADMIN DEMO PANEL (bottom-right corner):
-
-- Amber/gold bordered floating panel
-
-- Dropdown to select any seat
-
-- "Lock Seat (2 min timer)" button - updates seat status to 'locked' in Supabase with expires_at = now + 2 minutes
-
-- "Release Seat Now" button - updates seat status back to 'available' in Supabase
-
-- When released, system checks waitlist and shows a toast saying who would be notified
-
-COUNTDOWN TIMER LOGIC:
-
-When a seat is locked, a visible countdown timer appears above it (e.g. "1:47"). When timer hits zero, the seat automatically updates to 'available' in Supabase via a client-side function call.
-
-REALTIME:
-
-Use Supabase's postgres_changes subscription on the seats table so all users see seat changes instantly.
-
-TOAST NOTIFICATIONS:
-
-- Green toast when a seat becomes available: "Seat A4 is now FREE!"
-
-- Cyan toast when waitlist joined: "You're #3 in queue for A4"
-
-- Amber toast when seat is locked: "Seat A4 locked — releases in 2 min"
-
-Make it look like a real premium cinema app, not a prototype. Every element should have the neon glow effect. The seat grid should fan out slightly wider toward the back rows to mimic a real auditorium perspective.
-
-This project was built with [Lovable](https://lovable.dev).
-
-**Live app**: https://seat-sync-web.lovable.app
-
-## Build with Lovable
-
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/b93c8286-8087-49c6-b45e-a317f929c587).
-
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
-
-## Development
-
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
-
-```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
-npm run dev
-```
+<br>
