@@ -1,0 +1,422 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-seat-available: var(--seat-available);
+  --color-seat-locked: var(--seat-locked);
+  --color-seat-selected: var(--seat-selected);
+  --color-seat-waitlisted: var(--seat-waitlisted);
+  /* legacy aliases kept so admin surfaces keep compiling */
+  --color-neon-cyan: var(--primary);
+  --color-neon-violet: var(--seat-waitlisted);
+  --color-neon-green: var(--seat-available);
+  --color-neon-amber: var(--seat-locked);
+  --color-panel: var(--surface);
+  --color-panel-2: var(--surface-2);
+  --font-display: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+}
+
+:root {
+  --radius: 0.75rem;
+  --background: #ffffff;
+  --foreground: #1c1c1c;
+  --surface: #f7f7f7;
+  --surface-2: #f0f0f0;
+  --card: #ffffff;
+  --card-foreground: #1c1c1c;
+  --popover: #ffffff;
+  --popover-foreground: #1c1c1c;
+  --primary: #e23744;
+  --primary-foreground: #ffffff;
+  --secondary: #f0f0f0;
+  --secondary-foreground: #1c1c1c;
+  --muted: #f7f7f7;
+  --muted-foreground: #717171;
+  --accent: #f7f7f7;
+  --accent-foreground: #1c1c1c;
+  --destructive: #e23744;
+  --destructive-foreground: #ffffff;
+  --border: #e8e8e8;
+  --input: #e8e8e8;
+  --ring: #e23744;
+  --seat-available: #2ecc71;
+  --seat-locked: #f39c12;
+  --seat-selected: #e23744;
+  --seat-waitlisted: #9b59b6;
+}
+
+.dark {
+  --background: #121212;
+  --foreground: #ffffff;
+  --surface: #1e1e1e;
+  --surface-2: #2a2a2a;
+  --card: #1e1e1e;
+  --card-foreground: #ffffff;
+  --popover: #1e1e1e;
+  --popover-foreground: #ffffff;
+  --secondary: #2a2a2a;
+  --secondary-foreground: #ffffff;
+  --muted: #1e1e1e;
+  --muted-foreground: #a0a0a0;
+  --accent: #2a2a2a;
+  --accent-foreground: #ffffff;
+  --border: #333333;
+  --input: #333333;
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  html, body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  body {
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+}
+
+@utility label-caps {
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+@utility card-soft {
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 4px 16px -8px rgba(0, 0, 0, 0.12);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.3s ease, border-color 0.3s ease;
+}
+@utility card-lift {
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05), 0 14px 32px -12px rgba(0, 0, 0, 0.22);
+  }
+}
+@utility pill {
+  border-radius: 9999px;
+}
+@utility btn-primary {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  border-radius: 9999px;
+  font-weight: 600;
+  transition: background-color 0.2s ease, opacity 0.2s ease, transform 0.15s ease;
+  &:hover {
+    background-color: #c92f3b;
+  }
+  &:active {
+    transform: scale(0.985);
+  }
+}
+
+/* legacy utilities kept (now flat, no neon) for the admin area */
+@utility glow-cyan { color: var(--primary); }
+@utility glow-violet { color: var(--seat-waitlisted); }
+@utility glow-green { color: var(--seat-available); }
+@utility glow-amber { color: var(--seat-locked); }
+@utility box-glow-cyan { box-shadow: 0 4px 14px -6px rgba(226, 55, 68, 0.35); }
+@utility box-glow-green { box-shadow: 0 4px 14px -6px rgba(46, 204, 113, 0.35); }
+@utility box-glow-amber { box-shadow: 0 4px 14px -6px rgba(243, 156, 18, 0.35); }
+@utility box-glow-violet { box-shadow: 0 4px 14px -6px rgba(155, 89, 182, 0.35); }
+@utility panel {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+@utility panel-2 {
+  background-color: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+/* Pastel neumorphism-lite palette for admin surfaces */
+@utility pastel-surface {
+  background: linear-gradient(180deg, #f7fbff 0%, #eef3fb 100%);
+  color: #2a3547;
+  border-radius: 12px;
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.9) inset,
+    0 -1px 0 rgba(180,195,215,0.35) inset,
+    0 10px 24px -12px rgba(80, 110, 160, 0.25),
+    0 4px 10px -6px rgba(80, 110, 160, 0.18);
+}
+@utility pastel-card {
+  background: #ffffff;
+  color: #2a3547;
+  border-radius: 12px;
+  border: 1px solid #e4ecf6;
+  box-shadow:
+    0 1px 0 rgba(255,255,255,1) inset,
+    0 12px 28px -14px rgba(80, 110, 160, 0.28),
+    0 4px 10px -6px rgba(80, 110, 160, 0.18);
+}
+@utility pastel-inset {
+  background: #eef3fb;
+  border-radius: 10px;
+  box-shadow:
+    inset 2px 2px 5px rgba(163, 177, 198, 0.35),
+    inset -2px -2px 5px rgba(255, 255, 255, 0.9);
+}
+@utility pastel-btn-amber {
+  background: linear-gradient(180deg, #ffe9a8 0%, #f8cf6b 100%);
+  color: #6b4d09;
+  border: 1px solid #e9b94a;
+  border-radius: 10px;
+  box-shadow: 0 6px 14px -6px rgba(230, 170, 40, 0.55);
+}
+@utility pastel-btn-green {
+  background: linear-gradient(180deg, #c9f2d4 0%, #90ee90 100%);
+  color: #1f5c2e;
+  border: 1px solid #6dcf7a;
+  border-radius: 10px;
+  box-shadow: 0 6px 14px -6px rgba(80, 190, 110, 0.55);
+}
+@utility pastel-btn-blue {
+  background: linear-gradient(180deg, #cfe8f7 0%, #87ceeb 100%);
+  color: #0f3d55;
+  border: 1px solid #5cb1d6;
+  border-radius: 10px;
+  box-shadow: 0 6px 14px -6px rgba(90, 170, 210, 0.55);
+}
+@utility pastel-btn-pink {
+  background: linear-gradient(180deg, #ffd6de 0%, #ffb6c1 100%);
+  color: #7a2a3a;
+  border: 1px solid #f18ea0;
+  border-radius: 10px;
+  box-shadow: 0 6px 14px -6px rgba(240, 130, 155, 0.55);
+}
+
+/* Typography scope for admin + auth surfaces */
+.admin-scope,
+.admin-scope * {
+  font-family: "DM Sans", ui-sans-serif, system-ui, -apple-system, sans-serif !important;
+  letter-spacing: normal;
+}
+.admin-scope h1,
+.admin-scope h2,
+.admin-scope h3,
+.admin-scope h4 {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+/* ---- Admin design system (District-style) ---- */
+:root {
+  --admin-hover: #fff0f0;
+  --admin-active: #fff5f5;
+}
+.dark {
+  --admin-hover: #2a2a2a;
+  --admin-active: #2a2a2a;
+}
+
+@utility admin-card {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.3s ease,
+    border-color 0.3s ease;
+}
+@utility admin-card-hover {
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  }
+}
+@utility admin-panel {
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+@utility admin-nav {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 40px;
+  padding: 0 16px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--foreground);
+  border-left: 3px solid transparent;
+  transition: background-color 0.15s ease, color 0.15s ease;
+  cursor: pointer;
+  &:hover {
+    background-color: var(--admin-hover);
+    color: var(--primary);
+  }
+}
+@utility admin-nav-active {
+  background-color: var(--admin-active);
+  color: var(--primary);
+  border-left-color: var(--primary);
+}
+@utility admin-section-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted-foreground);
+  padding: 16px 16px 4px;
+}
+@utility admin-badge {
+  display: inline-block;
+  border-radius: 4px;
+  padding: 3px 6px;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+@utility admin-btn {
+  border-radius: 6px;
+  padding: 4px 8px;
+  font-size: 12px;
+  font-weight: 600;
+  border: 1px solid currentColor;
+  background: transparent;
+  transition: background-color 0.15s ease, color 0.15s ease;
+  &:disabled {
+    opacity: 0.4;
+  }
+}
+@utility admin-btn-green {
+  color: #2ecc71;
+  &:hover:not(:disabled) {
+    background-color: #2ecc71;
+    color: #fff;
+  }
+}
+@utility admin-btn-red {
+  color: #e23744;
+  &:hover:not(:disabled) {
+    background-color: #e23744;
+    color: #fff;
+  }
+}
+@utility admin-btn-primary {
+  color: var(--primary-foreground);
+  background-color: var(--primary);
+  border-color: var(--primary);
+  &:hover:not(:disabled) {
+    opacity: 0.9;
+  }
+}
+@utility admin-btn-amber {
+  color: var(--seat-locked);
+  border-color: var(--seat-locked);
+  &:hover:not(:disabled) {
+    background-color: var(--seat-locked);
+    color: var(--primary-foreground);
+  }
+}
+@utility admin-btn-grey {
+  color: #717171;
+  &:hover:not(:disabled) {
+    background-color: #717171;
+    color: #fff;
+  }
+}
+@utility admin-th {
+  background-color: var(--surface);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted-foreground);
+  font-weight: 600;
+  text-align: left;
+  padding: 10px 14px;
+}
+@utility admin-td {
+  padding: 12px 14px;
+  font-size: 13px;
+  border-top: 1px solid var(--border);
+}
+@utility admin-row {
+  transition: background-color 0.15s ease;
+  &:hover {
+    background-color: var(--admin-active);
+  }
+}
+
+@keyframes admin-pop {
+  from { transform: scale(0.85); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+@keyframes admin-drawer-in {
+  from { transform: translateX(24px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+@keyframes admin-bounce {
+  0%, 80%, 100% { transform: translateY(0); opacity: 0.5; }
+  40% { transform: translateY(-4px); opacity: 1; }
+}
+@keyframes seat-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.55; }
+}
+
+
+@keyframes pulse-amber {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+@keyframes toast-up {
+  from { transform: translateY(8px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-8px); }
+  40% { transform: translateX(8px); }
+  60% { transform: translateX(-5px); }
+  80% { transform: translateX(5px); }
+}
+.animate-shake { animation: shake 0.45s ease-in-out; }
+
+@keyframes slide-in-left {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(0); }
+}
+.animate-slide-in-left { animation: slide-in-left 0.22s ease-out; }
