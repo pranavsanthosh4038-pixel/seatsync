@@ -1,4 +1,4 @@
-# 7. architecture.md: Intelligent Cancellation and Load Management System
+# Intelligent Cancellation and Load Management System
 
 This document outlines the system architecture for the **Intelligent Cancellation and Load Management System** implemented within the BookMyShow digital platform. It details the technical stack, core component mappings, database design, data flow patterns, hosting setup, and global scaling strategies for high-concurrency peak demand events.
 
