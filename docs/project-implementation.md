@@ -1,40 +1,106 @@
-# 8. project-implementation.md: Single Work Log
+# SeatSync — Project Implementation Tracker
 
-This is a living project management document tracking the end-to-end execution of the **BookMyShow Intelligent Cancellation and Load Management System**. It registers planned, active, completed, and blocked tasks across engineering modules, infrastructure provisioning, and quality assurance.
+**Digital Business Systems | ECD223-3**  
+**CHRIST (Deemed to be University), Bengaluru**  
+**Faculty:** Dr. Chandravesh Chaudhari
 
----
-
-## 1. Project Work Log Table
-
-| Task ID | Task Description | Component | Assigned To | Status | Completed By | Date Completed | AI Assistance | Evidence |
-| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| **T001** | Set up repository structure, CI/CD pipeline, and developer environment | Infrastructure / DevOps | Student A | Completed | Student A | 10 Aug 2026 | Yes | Commit `a1b2c3d` |
-| **T002** | Configure Terraform scripts for AWS VPC, Subnets, and EKS Cluster | Cloud / IaC | Student A | Completed | Student A | 12 Aug 2026 | Yes | Commit `e4f5g6h` |
-| **T003** | Implement JWT Authentication service and API Gateway routing rules | Auth / Security | Student B | Completed | Student B | 14 Aug 2026 | Yes | Commit `i7j8k9l` |
-| **T004** | Develop Go-based Booking Microservice for atomic seat lock handling | Backend Microservices | Student B | Completed | Student B | 16 Aug 2026 | Yes | Commit `m0n1o2p` |
-| **T005** | Provision Redis ElastiCache cluster and configure TTL locking key logic | Database / Cache | Student A | Completed | Student A | 17 Aug 2026 | Yes | Commit `q3r4s5t` |
-| **T006** | Integrate Vista ERP API Bridge for cinema inventory synchronization | Backend / ERP | Student C | Completed | Student C | 19 Aug 2026 | Yes | Commit `u6v7w8x` |
-| **T007** | Implement Dynamic Load Balancer module with Kubernetes HPA policies | Infrastructure / Backend | Student A | Completed | Student A | 20 Aug 2026 | Yes | Commit `y9z0a1b` |
-| **T008** | Develop Payment Retry Module to hold seats during transaction drop-offs | Backend / Payments | Student B | Completed | Student B | 21 Aug 2026 | Yes | Commit `c2d3e4f` |
-| **T009** | Build Smart Waitlist Engine microservice for automated seat reallocation | Backend / Algorithm | Student B | Completed | Student B | 22 Aug 2026 | Yes | Commit `g5h6i7j` |
-| **T010** | Set up Apache Kafka Event Bus and SQS queues for asynchronous processing | Messaging / Data Pipelines | Student A | Completed | Student A | 23 Aug 2026 | Yes | Commit `k8l9m0n` |
-| **T011** | Build Real-Time Notification Engine for SMS, Email, and Push alerts | Communications | Student C | Completed | Student C | 24 Aug 2026 | Yes | Commit `o1p2q3r` |
-| **T012** | Design and integrate React Native UI for real-time seat lock countdowns | Mobile Frontend | Student C | Completed | Student C | 24 Aug 2026 | Yes | Commit `s4t5u6v` |
-| **T013** | Construct React.js Web Portal for live seating maps and payment retries | Web Frontend | Student C | Completed | Student C | 25 Aug 2026 | Yes | Commit `w7x8y9z` |
-| **T014** | Integrate AWS SageMaker ML models for predictive cancellation forecasting | AI / DSS Analytics | Student B | In Progress | — | — | Yes | PR `#42` (Pending) |
-| **T015** | Configure Amazon CloudFront, AWS WAF, and Lambda@Edge virtual waiting room | Edge / Security | Student A | In Progress | — | — | Yes | PR `#45` (Pending) |
-| **T016** | Perform stress & load testing under simulated 1M & 5M user concurrency | QA / Performance | Student A & B | Blocked | — | — | Yes | Issue `#58` (Resource Limits) |
-| **T017** | Conduct end-to-end security audit and DPDP Act compliance validation | Security / Compliance | Student C | Planned | — | — | No | — |
-| **T018** | Finalize system documentation, architecture blueprints, and deployment guides | Documentation | Student A, B, C | In Progress | — | — | Yes | Commit `b3c4d5e` |
+## Team Members
+| Name | Roll Number | GitHub |
+|---|---|---|
+| Apeksha Vemali | 2533312 | apekshavemali |
+| Ardra Jyothikumar | 2533313 | ardrajyothikumar |
+| Cattamanchi Parthiv Reddy | 2533319 | parthivreddy |
+| Pranav S | 2533340 | pranavsanthosh4038-pixel |
+| Roopika Yallamelli | 2533345 | roopikayallamelli |
 
 ---
 
+## Project Links
+- **User App:** https://seat-sync-web.lovable.app
+- **Admin Dashboard:** https://seat-sync-web.lovable.app/admin
+- **GitHub Repository:** https://github.com/pranavsanthosh4038-pixel/seatsync
+- **Supabase Project:** gdmznjfjnyjywzhfqfwf.supabase.co
 
-## 2. Risk & Impediment Register
+---
 
-1. **Blocker on Task T016 (Load Testing):**
-   * **Issue:** Stress testing execution for 5M concurrent requests triggers AWS sandbox rate limits on synthetic traffic generation instances.
-   * **Mitigation Strategy:** Requesting temporary AWS quota increases for EKS nodes and CloudFront distribution endpoints prior to final execution.
-2. **Data Sync Latency on Task T006 (Vista ERP Bridge):**
-   * **Issue:** External cinema partner staging endpoints exhibit variable latency during peak sync polls.
-   * **Resolution:** Implemented circuit-breaker fallbacks and exponential backoff retries within the Go integration service.
+## Implementation Tracker
+
+| Task ID | Task | Component | Assigned To | Status | Completed By | Date Completed | AI Assistance | Evidence |
+|---|---|---|---|---|---|---|---|---|
+| T001 | Define business problem and select scenario | Planning | All Members | Completed | All Members | 10 Jul 2026 | No | Group discussion |
+| T002 | Create Supabase project and configure database | Database | Pranav S | Completed | Pranav S | 10 Jul 2026 | Yes | Supabase dashboard |
+| T003 | Create seats table with schema | Database | Pranav S | Completed | Pranav S | 10 Jul 2026 | Yes | Supabase SQL editor |
+| T004 | Create waitlist table with schema | Database | Pranav S | Completed | Pranav S | 10 Jul 2026 | Yes | Supabase SQL editor |
+| T005 | Seed seats table with rows A-E (30 seats) | Database | Pranav S | Completed | Pranav S | 10 Jul 2026 | Yes | Supabase table editor |
+| T006 | Enable Supabase Realtime on seats and waitlist tables | Database/Backend | Pranav S | Completed | Pranav S | 10 Jul 2026 | Yes | Supabase replication settings |
+| T007 | Create users table | Database | Pranav S | Completed | Pranav S | 19 Aug 2026 | Yes | db/schema.sql |
+| T008 | Create shows table | Database | Pranav S | Completed | Pranav S | 19 Aug 2026 | Yes | db/schema.sql |
+| T009 | Create bookings table | Database | Pranav S | Completed | Pranav S | 19 Aug 2026 | Yes | db/schema.sql |
+| T010 | Create notifications table | Database | Pranav S | Completed | Pranav S | 19 Aug 2026 | Yes | db/schema.sql |
+| T011 | Create admin_logs table | Database | Roopika Yallamelli | Completed | Roopika Yallamelli | 19 Aug 2026 | Yes | db/schema.sql |
+| T012 | Design initial SeatSync user interface in Lovable | Frontend | Apeksha Vemali | Completed | Apeksha Vemali | 12 Jul 2026 | Yes | seat-sync-web.lovable.app |
+| T013 | Implement movie browsing page with city selection | Frontend | Apeksha Vemali | Completed | Apeksha Vemali | 14 Jul 2026 | Yes | src/pages/Index.tsx |
+| T014 | Implement seat map component with row layout | Frontend | Apeksha Vemali | Completed | Apeksha Vemali | 15 Jul 2026 | Yes | src/components/SeatMap.tsx |
+| T015 | Implement seat selection logic (up to 8 seats) | Frontend | Apeksha Vemali | Completed | Apeksha Vemali | 15 Jul 2026 | Yes | src/components/SeatMap.tsx |
+| T016 | Implement waitlist form with phone number input | Frontend | Apeksha Vemali | Completed | Apeksha Vemali | 16 Jul 2026 | Yes | src/components/WaitlistForm.tsx |
+| T017 | Connect frontend to Supabase (client setup) | Backend/Integration | Pranav S | Completed | Pranav S | 10 Jul 2026 | Yes | src/integrations/supabase/client.ts |
+| T018 | Implement Supabase Realtime subscription for seat updates | Backend/Integration | Pranav S | Completed | Pranav S | 11 Jul 2026 | Yes | src/components/SeatMap.tsx |
+| T019 | Implement waitlist INSERT operation | Backend/Integration | Apeksha Vemali | Completed | Apeksha Vemali | 16 Jul 2026 | Yes | src/components/WaitlistForm.tsx |
+| T020 | Implement queue position display after joining waitlist | Frontend | Apeksha Vemali | Completed | Apeksha Vemali | 17 Jul 2026 | Yes | src/components/WaitlistForm.tsx |
+| T021 | Implement countdown timer on locked seats | Frontend/Algorithm | Ardra Jyothikumar | Completed | Ardra Jyothikumar | 18 Jul 2026 | Yes | src/components/SeatMap.tsx |
+| T022 | Implement seat auto-release when timer expires | Backend/Algorithm | Ardra Jyothikumar | Completed | Ardra Jyothikumar | 18 Jul 2026 | Yes | src/components/SeatMap.tsx |
+| T023 | Implement waitlist priority notification algorithm | Backend/Algorithm | Roopika Yallamelli | Completed | Roopika Yallamelli | 20 Jul 2026 | Yes | Retool releaseSeat function |
+| T024 | Set up Twilio account and verify phone numbers | External Services | Pranav S | Completed | Pranav S | 11 Jul 2026 | No | Twilio console |
+| T025 | Implement SMS notification via Twilio in Retool | Backend/Algorithm | Roopika Yallamelli | Completed | Roopika Yallamelli | 20 Jul 2026 | Yes | Retool releaseSeat function |
+| T026 | Implement lockSeatForCustomer Retool function | Backend | Cattamanchi Parthiv Reddy | Completed | Cattamanchi Parthiv Reddy | 22 Jul 2026 | Yes | Retool lockSeatForCustomer |
+| T027 | Implement releaseSeat Retool function | Backend | Cattamanchi Parthiv Reddy | Completed | Cattamanchi Parthiv Reddy | 22 Jul 2026 | Yes | Retool releaseSeat |
+| T028 | Build admin dashboard UI | Frontend | Cattamanchi Parthiv Reddy | Completed | Cattamanchi Parthiv Reddy | 25 Jul 2026 | Yes | seat-sync-web.lovable.app/admin |
+| T029 | Implement live seat map on admin dashboard | Frontend | Cattamanchi Parthiv Reddy | Completed | Cattamanchi Parthiv Reddy | 26 Jul 2026 | Yes | Admin dashboard |
+| T030 | Implement waitlist manager on admin dashboard | Frontend | Cattamanchi Parthiv Reddy | Completed | Cattamanchi Parthiv Reddy | 26 Jul 2026 | Yes | Admin dashboard |
+| T031 | Implement KPI dashboard (total seats, available, locked, waitlist count) | Frontend | Cattamanchi Parthiv Reddy | Completed | Cattamanchi Parthiv Reddy | 27 Jul 2026 | Yes | Admin dashboard |
+| T032 | Implement PIN-based admin authentication | Authentication | Ardra Jyothikumar | Completed | Ardra Jyothikumar | 28 Jul 2026 | Yes | src/components/AdminAuth.tsx |
+| T033 | Implement dark/light mode toggle | Frontend | Ardra Jyothikumar | Completed | Ardra Jyothikumar | 29 Jul 2026 | Yes | src/components/Header.tsx |
+| T034 | Redesign UI to match District by Zomato aesthetic | Frontend | Apeksha Vemali | Completed | Apeksha Vemali | 01 Aug 2026 | Yes | src/styles/ |
+| T035 | Add real movie poster images from TMDB | Frontend | Apeksha Vemali | Completed | Apeksha Vemali | 02 Aug 2026 | Yes | src/data/movies.ts |
+| T036 | Add regional movies (Tamil, Telugu, Malayalam, Kannada, Hindi) | Frontend/Data | Apeksha Vemali | Completed | Apeksha Vemali | 03 Aug 2026 | Yes | src/data/movies.ts |
+| T037 | Implement YouTube-style sidebar navigation | Frontend | Ardra Jyothikumar | Completed | Ardra Jyothikumar | 05 Aug 2026 | Yes | src/components/Sidebar.tsx |
+| T038 | Implement city selector (Bengaluru, Mumbai, Delhi, etc.) | Frontend | Ardra Jyothikumar | Completed | Ardra Jyothikumar | 05 Aug 2026 | Yes | src/components/Header.tsx |
+| T039 | Implement category filtering (Movies, Events, Sports, Dining) | Frontend | Ardra Jyothikumar | Completed | Ardra Jyothikumar | 06 Aug 2026 | Yes | src/components/CategoryFilter.tsx |
+| T040 | Add AI chat assistant (SeatSync AI) to admin dashboard | Frontend/Integration | Pranav S | Completed | Pranav S | 08 Aug 2026 | Yes | src/components/AIChatWidget.tsx |
+| T041 | Fix SMS to send to dynamic phone number from waitlist | Backend/Bug Fix | Pranav S | Completed | Pranav S | 14 Aug 2026 | Yes | Retool releaseSeat function |
+| T042 | Add second verified Twilio number for testing | External Services | Pranav S | Completed | Pranav S | 19 Aug 2026 | No | Twilio Verified Caller IDs |
+| T043 | Set up Retool admin dashboard with bookSeat function | Backend | Cattamanchi Parthiv Reddy | Completed | Cattamanchi Parthiv Reddy | 10 Aug 2026 | Yes | Retool dashboard |
+| T044 | Write docs/architecture.md | Documentation | Ardra Jyothikumar | Completed | Ardra Jyothikumar | 09 Sep 2026 | Yes | docs/architecture.md |
+| T045 | Write db/schema.sql with all 7 tables | Database/Documentation | Pranav S | Completed | Pranav S | 09 Sep 2026 | Yes | db/schema.sql |
+| T046 | Write project-implementation.md tracker | Documentation | Roopika Yallamelli | Completed | Roopika Yallamelli | 09 Sep 2026 | Yes | docs/project-implementation.md |
+| T047 | Push full frontend codebase to GitHub | DevOps | Pranav S | Completed | Pranav S | 09 Sep 2026 | No | GitHub commit history |
+| T048 | Implement admin redesign matching main site design language | Frontend | Cattamanchi Parthiv Reddy | Completed | Cattamanchi Parthiv Reddy | 19 Aug 2026 | Yes | Admin dashboard |
+| T049 | Test end-to-end waitlist flow (join → release → SMS) | Testing | All Members | Completed | All Members | 19 Aug 2026 | No | Live demo recording |
+| T050 | Verify CRUD operations on all database tables | Testing/Database | Pranav S | Completed | Pranav S | 19 Aug 2026 | No | Supabase table editor |
+
+---
+
+## AI Assistance Record
+
+All tasks marked "Yes" under AI Assistance involved one or more of the following:
+- **Claude (Anthropic)** — architecture guidance, code generation, documentation writing, debugging
+- **Lovable AI** — React component generation and UI implementation
+- **GitHub Copilot** — inline code suggestions during development
+
+As per CIA III guidelines, AI tools were used for development assistance. Each student listed as "Completed By" has reviewed, tested, and verified their assigned implementation and can explain it during evaluation.
+
+---
+
+## Status Summary
+
+| Status | Count |
+|---|---|
+| Completed | 50 |
+| In Progress | 0 |
+| Pending | 0 |
+| Blocked | 0 |
+
+---
+
+*This document serves as the official work log and contribution record for CIA III.*  
+*Last updated: 09 September 2026*
