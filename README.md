@@ -9,7 +9,7 @@ Roopika Yalamelli
 
 ## FEATURES 
 
-1. Live Queue Status
+1. Live Queue Status.
 
 SeatSync provides a live queue status that allows users to see exactly where they stand in the waiting list. Instead of repeatedly checking the booking page, users can track how many people are ahead of them and get an idea of how likely they are to get a seat. This makes the waiting process more transparent and reduces uncertainty.
 
