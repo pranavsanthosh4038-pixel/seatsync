@@ -1,27 +1,4 @@
-# SeatSync — Project Implementation Tracker
 
-**Digital Business Systems | ECD223-3**  
-**CHRIST (Deemed to be University), Bengaluru**  
-**Faculty:** Dr. Chandravesh Chaudhari
-
-## Team Members
-| Name | Roll Number | GitHub |
-|---|---|---|
-| Apeksha Vemali | 2533312 | apekshavemali |
-| Ardra Jyothikumar | 2533313 | ardrajyothikumar |
-| Cattamanchi Parthiv Reddy | 2533319 | parthivreddy |
-| Pranav S | 2533340 | pranavsanthosh4038-pixel |
-| Roopika Yallamelli | 2533345 | roopikayallamelli |
-
----
-
-## Project Links
-- **User App:** https://seat-sync-web.lovable.app
-- **Admin Dashboard:** https://seat-sync-web.lovable.app/admin
-- **GitHub Repository:** https://github.com/pranavsanthosh4038-pixel/seatsync
-- **Supabase Project:** gdmznjfjnyjywzhfqfwf.supabase.co
-
----
 
 ## Implementation Tracker
 
