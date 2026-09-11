@@ -150,6 +150,8 @@ SeatSync is an Intelligent Cancellation and Load Management System that adds a d
 
 ### Entity Relationship Overview
 
+![ER Diagram](../er-diagram.png)
+
 ```
 users (1) ──────────────────────── bookings (many)
   │ phone                              │ user_phone (FK)
