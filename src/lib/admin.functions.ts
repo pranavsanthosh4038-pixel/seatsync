@@ -16,6 +16,25 @@ async function logActivity(
     details?: Record<string, unknown>;
   },
 ) {
+  await supabase.from("admin_activity").insert({
+    actor_id: actorId,
+    actor_email: actorEmail,
+    action,
+    seat_id: fields.seat_id ?? null,
+    show_id: fields.show_id ?? null,
+    target_phone: fields.target_phone ?? null,
+    details: fields.details ?? {},
+  });
+}
+
+async function fireSmsBg(phone: string, message: string) {
+  try {
+    const { sendSms } = await import("./sms.functions");
+    await sendSms({ data: { phone, message } });
+  } catch (e) {
+    console.warn("[admin sms] fail", e);
+  }
+}
 
 // ------- SHOWS LIST WITH COUNTS -------
 export const listShowsWithCounts = createServerFn({ method: "GET" })
