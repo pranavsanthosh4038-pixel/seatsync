@@ -37,39 +37,7 @@ async function fireSmsBg(phone: string, message: string) {
 }
 
 // ------- SHOWS LIST WITH COUNTS -------
-export const listShowsWithCounts = createServerFn({ method: "GET" })
-  .middleware([requireSupabaseAuth])
-  .handler(async ({ context }) => {
-    const { supabase } = context as any;
 
-    const [showsRes, moviesRes, seatsRes, waitRes] = await Promise.all([
-      supabase.from("shows").select("*").order("id"),
-      supabase.from("movies").select("*"),
-      supabase.from("seats").select("status"),
-      supabase.from("waitlist").select("id"),
-    ]);
-
-    if (showsRes.error) throw showsRes.error;
-    if (moviesRes.error) throw moviesRes.error;
-
-    const seats = seatsRes.data ?? [];
-    const total = seats.length;
-    const locked = seats.filter((s: any) => s.status === "locked").length;
-    const booked = seats.filter((s: any) => s.status === "booked").length;
-    const available = seats.filter((s: any) => s.status === "available").length;
-    const waitlisted = waitRes.data?.length ?? 0;
-
-    const movies = new Map((moviesRes.data ?? []).map((m: any) => [m.slug, m]));
-    const shows = (showsRes.data ?? []).map((s: any) => ({
-      ...s,
-      movie: movies.get(s.movie_slug) ?? null,
-    }));
-
-    return {
-      shows,
-      counts: { total, locked, booked, available, waitlisted },
-    };
-  });
 
 // ------- GET SHOW DETAIL -------
 export const getShowDetail = createServerFn({ method: "GET" })
