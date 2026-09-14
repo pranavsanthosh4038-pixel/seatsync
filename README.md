@@ -1,6 +1,10 @@
 
 
 
+
+
+
+
 # Seat Sync 
 <img width="1600" height="1600" alt="image" src="https://github.com/user-attachments/assets/6319016e-0d55-4642-8db5-23a1e1a167cb" />
 Apeksha Vemali <br>
@@ -31,5 +35,7 @@ SeatSync supports multiple languages, making the platform more accessible to a w
 5. Load Engine
 
 The load engine is designed to test how SeatSync performs under high demand. It can simulate thousands of users checking for seats and multiple cancellations happening at the same time. This helps us identify possible performance issues and ensures that the platform remains fast, stable, and reliable during peak booking periods, such as weekends or the release of highly anticipated movies. 
+
+https://github.com/user-attachments/assets/3b858e0f-a9d9-4a2f-b1d7-4de22a0e8ef9
 
 <br>
