@@ -36,6 +36,7 @@ async function fireSmsBg(phone: string, message: string) {
   }
 }
 
+
 // ------- SHOWS LIST WITH COUNTS -------
 export const listShowsWithCounts = createServerFn({ method: "GET" })
   .middleware([requireSupabaseAuth])
@@ -68,6 +69,24 @@ export const listShowsWithCounts = createServerFn({ method: "GET" })
     return {
       shows,
       counts: { total, locked, booked, available, waitlisted },
+    };
+  });
+// ------- GET SHOW DETAIL -------
+export const getShowDetail = createServerFn({ method: "GET" })
+  .middleware([requireSupabaseAuth])
+  .inputValidator((i: unknown) => z.object({ showId: z.string() }).parse(i))
+  .handler(async ({ data, context }) => {
+    const { supabase } = context as any;
+    const [showRes, seatsRes, waitRes] = await Promise.all([
+      supabase.from("shows").select("*, movie:movies(*)").eq("id", data.showId).maybeSingle(),
+      supabase.from("seats").select("*").order("row_label").order("seat_number"),
+      supabase.from("waitlist").select("*").order("seat_id").order("position"),
+    ]);
+    if (showRes.error) throw showRes.error;
+    return {
+      show: showRes.data,
+      seats: seatsRes.data ?? [],
+      waitlist: waitRes.data ?? [],
     };
   });
 
