@@ -1,6 +1,5 @@
 
 
-https://github.com/user-attachments/assets/aad73821-30af-4278-af98-9de045b7d2b1
 
 # Seat Sync 
 <img width="1600" height="1600" alt="image" src="https://github.com/user-attachments/assets/6319016e-0d55-4642-8db5-23a1e1a167cb" />
