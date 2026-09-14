@@ -1,21 +1,4 @@
-import { createServerFn } from "@tanstack/react-start";
-import { z } from "zod";
-import { requireSupabaseAuth } from "@/integrations/supabase/auth-middleware";
 
-const LOCK_MINUTES = 10;
-
-async function logActivity(
-  supabase: any,
-  actorEmail: string | null,
-  actorId: string,
-  action: string,
-  fields: {
-    seat_id?: string | null;
-    show_id?: string | null;
-    target_phone?: string | null;
-    details?: Record<string, unknown>;
-  },
-) {
   await supabase.from("admin_activity").insert({
     actor_id: actorId,
     actor_email: actorEmail,
